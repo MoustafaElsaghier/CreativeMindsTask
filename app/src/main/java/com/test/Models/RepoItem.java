@@ -25,6 +25,17 @@ public class RepoItem implements Serializable {
     @SerializedName("url")
     @Expose
     private String url;
+    @SerializedName("full_name")
+    @Expose
+    private String fullName;
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
 
     public Integer getId() {
         return id;

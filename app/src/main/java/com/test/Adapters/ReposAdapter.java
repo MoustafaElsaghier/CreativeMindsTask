@@ -33,7 +33,8 @@ public class ReposAdapter extends RecyclerView.Adapter<ReposAdapter.ViewHolder> 
     @Override
     public void onBindViewHolder(@NonNull ReposAdapter.ViewHolder holder, int position) {
         final RepoItem object = arrayListData.get(position);
-
+        // bind the data to views
+        holder.bindViews(object);
 
         // hide the divider between items in last item
         if (position == getItemCount() - 1)
@@ -58,6 +59,12 @@ public class ReposAdapter extends RecyclerView.Adapter<ReposAdapter.ViewHolder> 
             repoName = itemView.findViewById(R.id.repoName);
             repoFullName = itemView.findViewById(R.id.repoFullName);
             repoDesc = itemView.findViewById(R.id.repoDesc);
+        }
+
+        public void bindViews(RepoItem repoItem) {
+            repoName.setText(repoItem.getName());
+            repoDesc.setText(repoItem.getDescription());
+            repoFullName.setText(repoItem.getFullName());
         }
     }
 }
