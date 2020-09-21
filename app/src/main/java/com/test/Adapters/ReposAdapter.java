@@ -5,6 +5,8 @@ import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -17,13 +19,15 @@ import com.test.Utilities.AppUtilities;
 
 import java.util.ArrayList;
 
-public class ReposAdapter extends RecyclerView.Adapter<ReposAdapter.ViewHolder> {
+public class ReposAdapter extends RecyclerView.Adapter<ReposAdapter.ViewHolder> implements Filterable {
     private Context context;
     private ArrayList<RepoItem> arrayListData;
+    private ArrayList<RepoItem> arrayListDataFiltered;
 
     public ReposAdapter(Context context, ArrayList<RepoItem> arrayListData) {
         this.context = context;
         this.arrayListData = arrayListData;
+        this.arrayListDataFiltered = arrayListData;
     }
 
     @NonNull
@@ -35,7 +39,7 @@ public class ReposAdapter extends RecyclerView.Adapter<ReposAdapter.ViewHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull ReposAdapter.ViewHolder holder, int position) {
-        final RepoItem object = arrayListData.get(position);
+        final RepoItem object = arrayListDataFiltered.get(position);
         // bind the data to views
         holder.bindViews(object);
 
@@ -49,7 +53,42 @@ public class ReposAdapter extends RecyclerView.Adapter<ReposAdapter.ViewHolder> 
 
     @Override
     public int getItemCount() {
-        return arrayListData == null ? 0 : arrayListData.size();
+        return arrayListDataFiltered == null ? 0 : arrayListDataFiltered.size();
+    }
+
+    @Override
+    public Filter getFilter() {
+        return new Filter() {
+            @Override
+            protected FilterResults performFiltering(CharSequence charSequence) {
+                String charString = charSequence.toString();
+                if (charString.isEmpty()) {
+                    arrayListDataFiltered = arrayListData;
+                } else {
+                    ArrayList<RepoItem> filteredList = new ArrayList<>();
+                    for (RepoItem row : arrayListData) {
+
+                        // name match condition. this might differ depending on your requirement
+                        // here we are looking for name or phone number match
+                        if (row.getName().toLowerCase().contains(charString.toLowerCase())) {
+                            filteredList.add(row);
+                        }
+                    }
+
+                    arrayListDataFiltered = filteredList;
+                }
+
+                FilterResults filterResults = new FilterResults();
+                filterResults.values = arrayListDataFiltered;
+                return filterResults;
+            }
+
+            @Override
+            protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
+                arrayListDataFiltered = (ArrayList<RepoItem>) filterResults.values;
+                notifyDataSetChanged();
+            }
+        };
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
