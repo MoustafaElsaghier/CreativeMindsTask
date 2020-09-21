@@ -12,22 +12,22 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.test.Adapters.BookingsAdapter;
 import com.test.R;
-import com.test.databinding.FragmentWaitingBinding;
+import com.test.databinding.FragmentAccepptedBinding;
 
 import java.util.ArrayList;
 
-public class WaitingFragment extends Fragment {
-    FragmentWaitingBinding binding;
+public class AcepptedFragment extends Fragment {
 
-    public WaitingFragment() {
+    FragmentAccepptedBinding binding;
+
+    public AcepptedFragment() {
         // Required empty public constructor
     }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_waiting, container, false);
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_acceppted, container, false);
 
         initViews();
         return binding.getRoot();
@@ -36,12 +36,14 @@ public class WaitingFragment extends Fragment {
     private void initViews() {
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         ArrayList<String> listItems = new ArrayList<>();
-        listItems.add("وظيفه رقم 1");
-        listItems.add("وظيفه رقم 2");
-        listItems.add("وظيفه رقم 3");
-        listItems.add("وظيفه رقم 4");
-        listItems.add("وظيفه رقم 5");
-        listItems.add("وظيفه رقم 6");
+        listItems.add("وظيفه مقبوله رقم 1");
+        listItems.add("وظيفه مقبوله رقم 2");
+        listItems.add("وظيفه مقبوله رقم 3");
+        listItems.add("وظيفه مقبوله رقم 4");
+        listItems.add("وظيفه مقبوله رقم 5");
+        listItems.add("وظيفه مقبوله رقم 6");
+        listItems.add("وظيفه مقبوله رقم 7");
+        listItems.add("وظيفه مقبوله رقم 8");
         binding.recyclerView.setAdapter(new BookingsAdapter(getContext(), listItems, false));
     }
 }

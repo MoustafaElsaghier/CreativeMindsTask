@@ -3,10 +3,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/orderImage"
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:layout_marginTop="8dp"
@@ -16,14 +16,15 @@
         app:srcCompat="@drawable/type_car" />
 
     <TextView
-        android:id="@+id/taskName"
+        android:id="@+id/orderName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toStartOf="@+id/imageView"
-        app:layout_constraintTop_toTopOf="@+id/imageView"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toStartOf="@+id/orderImage"
+        app:layout_constraintTop_toTopOf="@+id/orderImage"
         tools:text="TextView" />
 
     <ImageView
@@ -32,8 +33,8 @@
         android:layout_height="16dp"
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="8dp"
-        app:layout_constraintBottom_toBottomOf="@+id/imageView"
-        app:layout_constraintEnd_toStartOf="@+id/imageView"
+        app:layout_constraintBottom_toBottomOf="@+id/orderImage"
+        app:layout_constraintEnd_toStartOf="@+id/orderImage"
         app:srcCompat="@drawable/my_list_help_accepted_time" />
 
     <TextView
@@ -43,7 +44,7 @@
         android:layout_marginEnd="4dp"
         android:text="منذ ساعه"
         android:textColor="#B5B4B4"
-        android:textSize="12sp"
+        android:textSize="13sp"
         app:layout_constraintBottom_toBottomOf="@+id/imageView2"
         app:layout_constraintEnd_toStartOf="@+id/imageView2"
         app:layout_constraintTop_toTopOf="@+id/imageView2" />
@@ -65,7 +66,7 @@
         android:layout_marginEnd="4dp"
         android:text="رجال"
         android:textColor="#B5B4B4"
-        android:textSize="12sp"
+        android:textSize="13sp"
         app:layout_constraintBottom_toBottomOf="@+id/imageView3"
         app:layout_constraintEnd_toStartOf="@+id/imageView3"
         app:layout_constraintTop_toTopOf="@+id/imageView3" />
@@ -87,7 +88,7 @@
         android:layout_marginEnd="4dp"
         android:text="فزعه سيارة"
         android:textColor="#B5B4B4"
-        android:textSize="12sp"
+        android:textSize="13sp"
         app:layout_constraintBottom_toBottomOf="@+id/imageView4"
         app:layout_constraintEnd_toStartOf="@+id/imageView4"
         app:layout_constraintTop_toTopOf="@+id/imageView4" />
@@ -109,13 +110,13 @@
         android:layout_marginEnd="4dp"
         android:text="2 فزعوا"
         android:textColor="#B5B4B4"
-        android:textSize="12sp"
+        android:textSize="13sp"
         app:layout_constraintBottom_toBottomOf="@+id/imageView5"
         app:layout_constraintEnd_toStartOf="@+id/imageView5"
         app:layout_constraintTop_toTopOf="@+id/imageView5" />
 
     <Button
-        android:id="@+id/textView6"
+        android:id="@+id/cancelButton"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
         android:layout_marginTop="6dp"
@@ -123,17 +124,18 @@
         android:padding="0dp"
         android:text="إلغاء"
         android:textColor="@android:color/holo_purple"
-        app:layout_constraintEnd_toStartOf="@+id/imageView"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintEnd_toStartOf="@+id/orderImage"
+        app:layout_constraintTop_toBottomOf="@+id/orderImage" />
 
     <View
+        android:id="@+id/dividerLine"
         android:layout_width="match_parent"
-        android:layout_height="0.4dp"
+        android:layout_height="0.3dp"
         android:layout_marginStart="32dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="32dp"
         android:background="#809F9F9F"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+        app:layout_constraintTop_toBottomOf="@+id/cancelButton" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -12,14 +12,15 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.test.Adapters.BookingsAdapter;
 import com.test.R;
-import com.test.databinding.FragmentWaitingBinding;
+import com.test.databinding.FragmentCancelledBinding;
 
 import java.util.ArrayList;
 
-public class WaitingFragment extends Fragment {
-    FragmentWaitingBinding binding;
+public class CancelledFragment extends Fragment {
 
-    public WaitingFragment() {
+    FragmentCancelledBinding binding;
+
+    public CancelledFragment() {
         // Required empty public constructor
     }
 
@@ -27,7 +28,7 @@ public class WaitingFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_waiting, container, false);
+        binding = DataBindingUtil.inflate(inflater, R.layout.fragment_cancelled, container, false);
 
         initViews();
         return binding.getRoot();
@@ -36,12 +37,13 @@ public class WaitingFragment extends Fragment {
     private void initViews() {
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         ArrayList<String> listItems = new ArrayList<>();
-        listItems.add("وظيفه رقم 1");
-        listItems.add("وظيفه رقم 2");
-        listItems.add("وظيفه رقم 3");
-        listItems.add("وظيفه رقم 4");
-        listItems.add("وظيفه رقم 5");
-        listItems.add("وظيفه رقم 6");
-        binding.recyclerView.setAdapter(new BookingsAdapter(getContext(), listItems, false));
+        listItems.add("وظيفه ملغيه رقم 1");
+        listItems.add("وظيفه ملغيه رقم 2");
+        listItems.add("وظيفه ملغيه رقم 3");
+        listItems.add("وظيفه ملغيه رقم 4");
+        listItems.add("وظيفه ملغيه رقم 5");
+        listItems.add("وظيفه ملغيه رقم 6");
+        listItems.add("وظيفه ملغيه رقم 7");
+        binding.recyclerView.setAdapter(new BookingsAdapter(getContext(), listItems, true));
     }
 }

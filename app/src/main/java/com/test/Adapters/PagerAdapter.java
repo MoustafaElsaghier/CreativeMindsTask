@@ -7,22 +7,22 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
-import com.fabricit.bookit.R;
-import com.fabricit.bookit.fragment.PastBookingFragment;
-import com.fabricit.bookit.fragment.UpComingFragment;
+import com.test.Fragments.AcepptedFragment;
+import com.test.Fragments.CancelledFragment;
+import com.test.Fragments.WaitingFragment;
+import com.test.R;
 
-/**
- * Created by jelly on 11/10/2019.
- */
 public class PagerAdapter extends FragmentStatePagerAdapter {
-    private UpComingFragment upComingFragment;
-    private PastBookingFragment pastBookingFragment;
+    private WaitingFragment waitingFragment;
+    private AcepptedFragment acepptedFragment;
+    private CancelledFragment cancelledFragment;
     private Context mContext;
 
     public PagerAdapter(Context context, FragmentManager fm) {
         super(fm, BEHAVIOR_RESUME_ONLY_CURRENT_FRAGMENT);
-        upComingFragment = new UpComingFragment();
-        pastBookingFragment = new PastBookingFragment();
+        waitingFragment = new WaitingFragment();
+        acepptedFragment = new AcepptedFragment();
+        cancelledFragment = new CancelledFragment();
         mContext = context;
     }
 
@@ -31,27 +31,29 @@ public class PagerAdapter extends FragmentStatePagerAdapter {
     @Override
     public Fragment getItem(int position) {
         if (position == 0) {
-            return upComingFragment;
+            return waitingFragment;
+        } else if (position == 1) {
+            return acepptedFragment;
         } else {
-            return pastBookingFragment;
+            return cancelledFragment;
         }
     }
 
-    public void refreshFragment(int position) {
-        switch (position) {
-            case 0:
-                upComingFragment.refreshApi();
-                break;
-            case 1:
-                pastBookingFragment.refreshApi();
-                break;
-        }
-    }
+//    public void refreshFragment(int position) {
+//        switch (position) {
+//            case 0:
+//                upComingFragment.refreshApi();
+//                break;
+//            case 1:
+//                pastBookingFragment.refreshApi();
+//                break;
+//        }
+//    }
 
     // This determines the number of tabs
     @Override
     public int getCount() {
-        return 2;
+        return 3;
     }
 
     // This determines the title for each tab
@@ -60,9 +62,11 @@ public class PagerAdapter extends FragmentStatePagerAdapter {
         // Generate title based on item position
         switch (position) {
             case 0:
-                return mContext.getString(R.string.up_coming);
+                return mContext.getString(R.string.wait);
             case 1:
-                return mContext.getString(R.string.past);
+                return mContext.getString(R.string.accept);
+            case 2:
+                return mContext.getString(R.string.cancel);
             default:
                 return null;
         }
