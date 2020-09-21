@@ -1,6 +1,7 @@
 package com.test.Adapters;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -65,6 +66,11 @@ public class ReposAdapter extends RecyclerView.Adapter<ReposAdapter.ViewHolder> 
             repoName.setText(repoItem.getName());
             repoDesc.setText(repoItem.getDescription());
             repoFullName.setText(repoItem.getFullName());
+
+            if (repoItem.isFork()) itemView.setBackgroundColor(Color.WHITE);
+            else itemView.setBackgroundColor(Color.GREEN);
+
+
         }
     }
 }

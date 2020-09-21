@@ -28,6 +28,17 @@ public class RepoItem implements Serializable {
     @SerializedName("full_name")
     @Expose
     private String fullName;
+    @SerializedName("fork")
+    @Expose
+    private boolean fork;
+
+    public boolean isFork() {
+        return fork;
+    }
+
+    public void setFork(boolean fork) {
+        this.fork = fork;
+    }
 
     public String getFullName() {
         return fullName;
