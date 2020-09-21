@@ -8,10 +8,12 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.test.Models.RepoItem;
 import com.test.R;
+import com.test.Utilities.AppUtilities;
 
 import java.util.ArrayList;
 
@@ -70,7 +72,15 @@ public class ReposAdapter extends RecyclerView.Adapter<ReposAdapter.ViewHolder> 
             if (repoItem.isFork()) itemView.setBackgroundColor(Color.WHITE);
             else itemView.setBackgroundColor(Color.GREEN);
 
+            itemView.setOnLongClickListener(v -> {
+                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                builder.setMessage(context.getString(R.string.repo_dialog_message));
+                builder.setPositiveButton(context.getString(R.string.repo_url), (dialog, which) -> AppUtilities.openURL(context, repoItem.getHtmlUrl()));
+                builder.setNegativeButton(context.getString(R.string.owner_url), (dialog, id) -> AppUtilities.openURL(context, repoItem.getOwner().getHtmlUrl()));
+                builder.show();
 
+                return false;
+            });
         }
     }
 }

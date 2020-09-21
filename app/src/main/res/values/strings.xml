@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">CreativeMinds</string>
+    <string name="repo_url">Repo Url</string>
+    <string name="owner_url">Owner Url</string>
+    <string name="repo_dialog_message">Go to Repository Url or Owner Url?</string>
 </resources>

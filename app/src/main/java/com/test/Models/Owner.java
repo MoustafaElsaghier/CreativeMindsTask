@@ -10,11 +10,23 @@ public class Owner implements Serializable {
     @SerializedName("avatar_url")
     @Expose
     private String avatarUrl;
-    @SerializedName("url")
-    @Expose
-    private String url;
     @SerializedName("html_url")
     @Expose
     private String htmlUrl;
 
+    public String getAvatarUrl() {
+        return avatarUrl;
+    }
+
+    public void setAvatarUrl(String avatarUrl) {
+        this.avatarUrl = avatarUrl;
+    }
+
+    public String getHtmlUrl() {
+        return htmlUrl;
+    }
+
+    public void setHtmlUrl(String htmlUrl) {
+        this.htmlUrl = htmlUrl;
+    }
 }
