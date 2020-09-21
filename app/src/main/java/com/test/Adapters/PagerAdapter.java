@@ -31,24 +31,13 @@ public class PagerAdapter extends FragmentStatePagerAdapter {
     @Override
     public Fragment getItem(int position) {
         if (position == 0) {
-            return waitingFragment;
+            return cancelledFragment;
         } else if (position == 1) {
             return acepptedFragment;
         } else {
-            return cancelledFragment;
+            return waitingFragment;
         }
     }
-
-//    public void refreshFragment(int position) {
-//        switch (position) {
-//            case 0:
-//                upComingFragment.refreshApi();
-//                break;
-//            case 1:
-//                pastBookingFragment.refreshApi();
-//                break;
-//        }
-//    }
 
     // This determines the number of tabs
     @Override
@@ -62,11 +51,11 @@ public class PagerAdapter extends FragmentStatePagerAdapter {
         // Generate title based on item position
         switch (position) {
             case 0:
-                return mContext.getString(R.string.wait);
+                return mContext.getString(R.string.cancel);
             case 1:
                 return mContext.getString(R.string.accept);
             case 2:
-                return mContext.getString(R.string.cancel);
+                return mContext.getString(R.string.wait);
             default:
                 return null;
         }

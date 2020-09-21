@@ -15,6 +15,8 @@ import com.test.R;
 
 import java.util.ArrayList;
 
+import static android.view.View.VISIBLE;
+
 public class BookingsAdapter extends RecyclerView.Adapter<BookingsAdapter.ViewHolder> {
     private Context context;
     private ArrayList<String> bookingList;
@@ -43,8 +45,10 @@ public class BookingsAdapter extends RecyclerView.Adapter<BookingsAdapter.ViewHo
             holder.cancelButton.setVisibility(View.GONE);
 
         if (position % 2 == 0) {
+            holder.orangeCircle.setVisibility(View.GONE);
             holder.orderImage.setImageResource(R.drawable.type_food);
         } else {
+            holder.orangeCircle.setVisibility(VISIBLE);
             holder.orderImage.setImageResource(R.drawable.type_car);
         }
 
@@ -52,7 +56,7 @@ public class BookingsAdapter extends RecyclerView.Adapter<BookingsAdapter.ViewHo
         if (position == getItemCount() - 1)
             holder.dividerLine.setVisibility(View.GONE);
         else
-            holder.dividerLine.setVisibility(View.VISIBLE);
+            holder.dividerLine.setVisibility(VISIBLE);
 
     }
 
@@ -65,10 +69,11 @@ public class BookingsAdapter extends RecyclerView.Adapter<BookingsAdapter.ViewHo
         public TextView orderName;
         View dividerLine;
         Button cancelButton;
-        ImageView orderImage;
+        ImageView orderImage, orangeCircle;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+            orangeCircle = itemView.findViewById(R.id.orangeCircle);
             dividerLine = itemView.findViewById(R.id.dividerLine);
             orderName = itemView.findViewById(R.id.orderName);
             cancelButton = itemView.findViewById(R.id.cancelButton);

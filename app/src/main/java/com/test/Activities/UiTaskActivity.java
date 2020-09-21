@@ -25,7 +25,7 @@ public class UiTaskActivity extends AppCompatActivity {
     private void initViews() {
         pagerAdapter = new PagerAdapter(this, getSupportFragmentManager());
         binding.pagerBooking.setAdapter(pagerAdapter);
-
+        binding.pagerBooking.setCurrentItem(2);
         binding.slidingTabs.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
             @Override
             public void onTabSelected(TabLayout.Tab tab) {

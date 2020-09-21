@@ -44,6 +44,10 @@ public class AcepptedFragment extends Fragment {
         listItems.add("وظيفه مقبوله رقم 6");
         listItems.add("وظيفه مقبوله رقم 7");
         listItems.add("وظيفه مقبوله رقم 8");
+        listItems.add("وظيفه مقبوله رقم 9");
+        listItems.add("وظيفه مقبوله رقم 10");
+        listItems.add("وظيفه مقبوله رقم 11");
+        listItems.add("وظيفه مقبوله رقم 12");
         binding.recyclerView.setAdapter(new BookingsAdapter(getContext(), listItems, false));
     }
 }
