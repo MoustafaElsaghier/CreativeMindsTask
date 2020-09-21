@@ -52,6 +52,11 @@ public class ReposListActivity extends AppCompatActivity {
                     loadData(page);
             }
         });
+
+        binding.swipeToRefresh.setOnRefreshListener(() -> {
+            listOfData.clear();
+            loadData(1);
+        });
     }
 
     private void loadData(int page) {
@@ -64,6 +69,8 @@ public class ReposListActivity extends AppCompatActivity {
                 if (response.isSuccessful()) {
                     List<RepoItem> body = response.body();
                     if (body != null) {
+                        if (binding.swipeToRefresh.isRefreshing())
+                            binding.swipeToRefresh.setRefreshing(false);
                         listOfData.addAll(body);
                         reposAdapter.notifyItemRangeInserted(reposAdapter.getItemCount(), body.size());
                     }
