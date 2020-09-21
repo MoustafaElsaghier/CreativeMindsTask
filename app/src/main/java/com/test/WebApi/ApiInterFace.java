@@ -11,6 +11,8 @@ import retrofit2.http.Query;
 public interface ApiInterFace {
 
     @GET("repos")
-    Call<List<RepoItem>> getListOfRepos(@Query("page") int page, @Query("per_page") int perPage);
+    Call<List<RepoItem>> getListOfRepos(@Query("page") int page,
+                                        @Query("per_page") int perPage,
+                                        @Query("access_token") String accessToken);
 
 }

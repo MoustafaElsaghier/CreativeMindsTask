@@ -27,6 +27,7 @@ import retrofit2.Response;
 public class ReposListActivity extends AppCompatActivity {
 
     private static final int PAGE_SIZE = 10;
+    private static final String ACCESS_TOKEN = "a43e1d4f617c876d46d34377265c3e0454bc64a3";
     ActivityReposListBinding binding;
     ReposAdapter reposAdapter;
     ArrayList<RepoItem> listOfData;
@@ -44,25 +45,29 @@ public class ReposListActivity extends AppCompatActivity {
         reposAdapter = new ReposAdapter(this, listOfData);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         binding.recyclerView.setLayoutManager(linearLayoutManager);
+
         binding.recyclerView.setAdapter(reposAdapter);
-        binding.recyclerView.addOnScrollListener(new EndlessRecyclerViewScrollListener(linearLayoutManager) {
+        EndlessRecyclerViewScrollListener scrollListener = new EndlessRecyclerViewScrollListener(linearLayoutManager) {
             @Override
             public void onLoadMore(int page, int totalItemsCount, RecyclerView view) {
                 if (page > 1)
                     loadData(page);
             }
-        });
+        };
+        binding.recyclerView.addOnScrollListener(scrollListener);
 
         binding.swipeToRefresh.setOnRefreshListener(() -> {
             listOfData.clear();
+            scrollListener.resetState();
             loadData(1);
+
         });
     }
 
     private void loadData(int page) {
         ApiInterFace apiService =
                 ApiClient.getClient();
-        Call<List<RepoItem>> listOfRepos = apiService.getListOfRepos(page, PAGE_SIZE);
+        Call<List<RepoItem>> listOfRepos = apiService.getListOfRepos(page, PAGE_SIZE, ACCESS_TOKEN);
         listOfRepos.enqueue(new Callback<List<RepoItem>>() {
             @Override
             public void onResponse(@NonNull Call<List<RepoItem>> call, @NonNull Response<List<RepoItem>> response) {
