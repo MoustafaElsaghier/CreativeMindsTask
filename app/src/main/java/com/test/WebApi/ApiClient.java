@@ -15,6 +15,7 @@ public class ApiClient {
     private static Retrofit retrofit = null;
 
     public static ApiInterFace getClient() {
+
         Gson gson = new GsonBuilder()
                 .setLenient()
                 .create();

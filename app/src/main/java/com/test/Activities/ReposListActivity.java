@@ -1,6 +1,8 @@
 package com.test.Activities;
 
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
@@ -58,9 +60,29 @@ public class ReposListActivity extends AppCompatActivity {
 
         binding.swipeToRefresh.setOnRefreshListener(() -> {
             listOfData.clear();
+            // to make listener reset it's state and back to page 1 again
+            // init page = 1 if pages are 1 based index & 0 if it's 0 based index
             scrollListener.resetState();
+            // to reset while swipe to refresh
+            binding.filterEdit.setText("");
             loadData(1);
 
+        });
+        binding.filterEdit.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                reposAdapter.getFilter().filter(s.toString());
+            }
         });
     }
 
